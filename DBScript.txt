@@ -1,17 +1,14 @@
+waste collection + fleet management
+data implementation
 
-// WASTE COLLECTION & FLEET MANAGEMENT
-
-
-// PART 2: DATABASE IMPLEMENTATION
-
-// Select database
+Select database
 use wasteManagementDB
 
-// Create collections
+Create collections
 db.createCollection("collectionVehicles")
 db.createCollection("collectionRoutes")
 
-// Insert 10 vehicles
+Insert 10 vehicles
 
 db.collectionVehicles.insertMany([
     {
@@ -199,7 +196,7 @@ db.collectionVehicles.insertMany([
 ])
 
 
-// Insert 10 routes
+Insert 10 routes
 
 db.collectionRoutes.insertMany([
     {
@@ -354,6 +351,6 @@ db.collectionRoutes.insertMany([
     }
 ])
 
-// Verify documents
+Verify documents
 db.collectionVehicles.countDocuments()
 db.collectionRoutes.countDocuments()
