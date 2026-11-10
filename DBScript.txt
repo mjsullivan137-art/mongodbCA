@@ -1,0 +1,359 @@
+
+// WASTE COLLECTION & FLEET MANAGEMENT
+
+
+// PART 2: DATABASE IMPLEMENTATION
+
+// Select database
+use wasteManagementDB
+
+// Create collections
+db.createCollection("collectionVehicles")
+db.createCollection("collectionRoutes")
+
+// Insert 10 vehicles
+
+db.collectionVehicles.insertMany([
+    {
+        vehicleID: "V001",
+        registration: "241D12345",
+        vehicleType: "Rear Loader",
+        capacityKg: 12000.5,
+        fuelType: "Diesel",
+        available: true,
+        purchaseDate: ISODate("2024-03-15"),
+        maintenanceHistory: [
+            {
+                serviceDate: ISODate("2026-05-10"),
+                description: "Engine maintenance",
+                cost: 450.00
+            }
+        ],
+        currentLocation: {
+            type: "Point",
+            coordinates: [-6.2603, 53.3498]
+        }
+    },
+    {
+        vehicleID: "V002",
+        registration: "231D54321",
+        vehicleType: "Front Loader",
+        capacityKg: 15000.0,
+        fuelType: "Diesel",
+        available: true,
+        purchaseDate: ISODate("2023-06-20"),
+        maintenanceHistory: [
+            {
+                serviceDate: ISODate("2026-04-12"),
+                description: "Brake inspection",
+                cost: 320.00
+            }
+        ],
+        currentLocation: {
+            type: "Point",
+            coordinates: [-6.3000, 53.3500]
+        }
+    },
+    {
+        vehicleID: "V003",
+        registration: "222D67890",
+        vehicleType: "Electric Compactor",
+        capacityKg: 9000.0,
+        fuelType: "Electric",
+        available: false,
+        purchaseDate: ISODate("2022-09-10"),
+        maintenanceHistory: [
+            {
+                serviceDate: ISODate("2026-06-15"),
+                description: "Battery inspection",
+                cost: 280.00
+            }
+        ],
+        currentLocation: {
+            type: "Point",
+            coordinates: [-6.2700, 53.3400]
+        }
+    },
+    {
+        vehicleID: "V004",
+        registration: "242D98765",
+        vehicleType: "Rear Loader",
+        capacityKg: 11000.0,
+        fuelType: "Diesel",
+        available: true,
+        purchaseDate: ISODate("2024-07-05"),
+        maintenanceHistory: [],
+        currentLocation: {
+            type: "Point",
+            coordinates: [-6.3200, 53.2900]
+        }
+    },
+    {
+        vehicleID: "V005",
+        registration: "231D11223",
+        vehicleType: "Side Loader",
+        capacityKg: 13000.0,
+        fuelType: "Hybrid",
+        available: true,
+        purchaseDate: ISODate("2023-02-18"),
+        maintenanceHistory: [
+            {
+                serviceDate: ISODate("2026-03-20"),
+                description: "Tyre replacement",
+                cost: 600.00
+            }
+        ],
+        currentLocation: {
+            type: "Point",
+            coordinates: [-6.3500, 53.3300]
+        }
+    },
+    {
+        vehicleID: "V006",
+        registration: "221D44556",
+        vehicleType: "Front Loader",
+        capacityKg: 16000.0,
+        fuelType: "Diesel",
+        available: false,
+        purchaseDate: ISODate("2022-01-12"),
+        maintenanceHistory: [
+            {
+                serviceDate: ISODate("2026-08-01"),
+                description: "Hydraulic system repair",
+                cost: 950.00
+            }
+        ],
+        currentLocation: {
+            type: "Point",
+            coordinates: [-6.2800, 53.3600]
+        }
+    },
+    {
+        vehicleID: "V007",
+        registration: "251D77889",
+        vehicleType: "Electric Compactor",
+        capacityKg: 8500.0,
+        fuelType: "Electric",
+        available: true,
+        purchaseDate: ISODate("2025-01-25"),
+        maintenanceHistory: [],
+        currentLocation: {
+            type: "Point",
+            coordinates: [-6.2400, 53.3700]
+        }
+    },
+    {
+        vehicleID: "V008",
+        registration: "232D33445",
+        vehicleType: "Rear Loader",
+        capacityKg: 12500.0,
+        fuelType: "Diesel",
+        available: true,
+        purchaseDate: ISODate("2023-11-30"),
+        maintenanceHistory: [
+            {
+                serviceDate: ISODate("2026-07-05"),
+                description: "Oil and filter change",
+                cost: 180.00
+            }
+        ],
+        currentLocation: {
+            type: "Point",
+            coordinates: [-6.3700, 53.3100]
+        }
+    },
+    {
+        vehicleID: "V009",
+        registration: "241D55667",
+        vehicleType: "Side Loader",
+        capacityKg: 14000.0,
+        fuelType: "Hybrid",
+        available: false,
+        purchaseDate: ISODate("2024-05-14"),
+        maintenanceHistory: [
+            {
+                serviceDate: ISODate("2026-09-10"),
+                description: "Transmission repair",
+                cost: 1100.00
+            }
+        ],
+        currentLocation: {
+            type: "Point",
+            coordinates: [-6.2900, 53.3000]
+        }
+    },
+    {
+        vehicleID: "V010",
+        registration: "251D99001",
+        vehicleType: "Rear Loader",
+        capacityKg: 10000.0,
+        fuelType: "Electric",
+        available: true,
+        purchaseDate: ISODate("2025-04-08"),
+        maintenanceHistory: [],
+        currentLocation: {
+            type: "Point",
+            coordinates: [-6.3300, 53.3500]
+        }
+    }
+])
+
+
+// Insert 10 routes
+
+db.collectionRoutes.insertMany([
+    {
+        routeID: "R001",
+        routeName: "Tallaght North",
+        vehicleID: "V001",
+        cityZone: "Tallaght",
+        wasteType: "General Waste",
+        collectionDate: ISODate("2026-11-01"),
+        distanceKm: 25.5,
+        totalWeightCollected: 8500.5,
+        completed: true,
+        collectionStops: [
+            { stopNumber: 1, street: "Main Street", weightCollected: 250.5, completed: true },
+            { stopNumber: 2, street: "High Street", weightCollected: 350.0, completed: true }
+        ]
+    },
+    {
+        routeID: "R002",
+        routeName: "Dublin City Centre",
+        vehicleID: "V002",
+        cityZone: "Dublin City Centre",
+        wasteType: "Recycling",
+        collectionDate: ISODate("2026-11-02"),
+        distanceKm: 18.2,
+        totalWeightCollected: 6200.0,
+        completed: true,
+        collectionStops: [
+            { stopNumber: 1, street: "O'Connell Street", weightCollected: 400.0, completed: true },
+            { stopNumber: 2, street: "Henry Street", weightCollected: 300.0, completed: true }
+        ]
+    },
+    {
+        routeID: "R003",
+        routeName: "Clondalkin West",
+        vehicleID: "V004",
+        cityZone: "Clondalkin",
+        wasteType: "General Waste",
+        collectionDate: ISODate("2026-11-03"),
+        distanceKm: 32.0,
+        totalWeightCollected: 9100.0,
+        completed: true,
+        collectionStops: [
+            { stopNumber: 1, street: "Nangor Road", weightCollected: 500.0, completed: true },
+            { stopNumber: 2, street: "Monastery Road", weightCollected: 420.0, completed: true }
+        ]
+    },
+    {
+        routeID: "R004",
+        routeName: "Blanchardstown Recycling",
+        vehicleID: "V005",
+        cityZone: "Blanchardstown",
+        wasteType: "Recycling",
+        collectionDate: ISODate("2026-11-04"),
+        distanceKm: 28.7,
+        totalWeightCollected: 5700.5,
+        completed: true,
+        collectionStops: [
+            { stopNumber: 1, street: "Main Street", weightCollected: 300.0, completed: true },
+            { stopNumber: 2, street: "Mill Road", weightCollected: 275.0, completed: true }
+        ]
+    },
+    {
+        routeID: "R005",
+        routeName: "Dun Laoghaire General",
+        vehicleID: "V008",
+        cityZone: "Dun Laoghaire",
+        wasteType: "General Waste",
+        collectionDate: ISODate("2026-11-05"),
+        distanceKm: 35.4,
+        totalWeightCollected: 10200.0,
+        completed: true,
+        collectionStops: [
+            { stopNumber: 1, street: "George Street", weightCollected: 600.0, completed: true },
+            { stopNumber: 2, street: "Marine Road", weightCollected: 450.0, completed: true }
+        ]
+    },
+    {
+        routeID: "R006",
+        routeName: "Finglas North",
+        vehicleID: "V007",
+        cityZone: "Finglas",
+        wasteType: "Organic Waste",
+        collectionDate: ISODate("2026-11-06"),
+        distanceKm: 22.3,
+        totalWeightCollected: 4300.0,
+        completed: false,
+        collectionStops: [
+            { stopNumber: 1, street: "Finglas Road", weightCollected: 350.0, completed: true },
+            { stopNumber: 2, street: "Ballygall Road", weightCollected: 0.0, completed: false }
+        ]
+    },
+    {
+        routeID: "R007",
+        routeName: "Rathmines Recycling",
+        vehicleID: "V010",
+        cityZone: "Rathmines",
+        wasteType: "Recycling",
+        collectionDate: ISODate("2026-11-07"),
+        distanceKm: 16.8,
+        totalWeightCollected: 3900.0,
+        completed: true,
+        collectionStops: [
+            { stopNumber: 1, street: "Rathmines Road", weightCollected: 275.0, completed: true },
+            { stopNumber: 2, street: "Lower Rathmines Road", weightCollected: 325.0, completed: true }
+        ]
+    },
+    {
+        routeID: "R008",
+        routeName: "Swords General Waste",
+        vehicleID: "V001",
+        cityZone: "Swords",
+        wasteType: "General Waste",
+        collectionDate: ISODate("2026-11-08"),
+        distanceKm: 40.5,
+        totalWeightCollected: 11500.0,
+        completed: true,
+        collectionStops: [
+            { stopNumber: 1, street: "Main Street", weightCollected: 700.0, completed: true },
+            { stopNumber: 2, street: "Malahide Road", weightCollected: 550.0, completed: true }
+        ]
+    },
+    {
+        routeID: "R009",
+        routeName: "Lucan Organic Collection",
+        vehicleID: "V005",
+        cityZone: "Lucan",
+        wasteType: "Organic Waste",
+        collectionDate: ISODate("2026-11-09"),
+        distanceKm: 27.6,
+        totalWeightCollected: 4800.0,
+        completed: false,
+        collectionStops: [
+            { stopNumber: 1, street: "Main Street", weightCollected: 400.0, completed: true },
+            { stopNumber: 2, street: "Leixlip Road", weightCollected: 0.0, completed: false }
+        ]
+    },
+    {
+        routeID: "R010",
+        routeName: "Drumcondra Recycling",
+        vehicleID: "V002",
+        cityZone: "Drumcondra",
+        wasteType: "Recycling",
+        collectionDate: ISODate("2026-11-10"),
+        distanceKm: 20.1,
+        totalWeightCollected: 5100.0,
+        completed: true,
+        collectionStops: [
+            { stopNumber: 1, street: "Drumcondra Road", weightCollected: 350.0, completed: true },
+            { stopNumber: 2, street: "Home Farm Road", weightCollected: 275.0, completed: true }
+        ]
+    }
+])
+
+// Verify documents
+db.collectionVehicles.countDocuments()
+db.collectionRoutes.countDocuments()
