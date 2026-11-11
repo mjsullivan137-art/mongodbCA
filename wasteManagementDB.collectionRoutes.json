@@ -1,0 +1,600 @@
+[{
+  "_id": {
+    "$oid": "6af4b8224da1018e3e970beb"
+  },
+  "routeID": "R001",
+  "routeName": "Tallaght North",
+  "vehicleID": "V001",
+  "cityZone": "Tallaght",
+  "wasteType": "General Waste",
+  "collectionDate": {
+    "$date": "2026-11-01T00:00:00.000Z"
+  },
+  "distanceKm": 25.5,
+  "totalWeightCollected": 8500.5,
+  "completed": true,
+  "collectionStops": [
+    {
+      "stopNumber": 1,
+      "street": "Main Street",
+      "weightCollected": 250.5,
+      "completed": true
+    },
+    {
+      "stopNumber": 2,
+      "street": "High Street",
+      "weightCollected": 350,
+      "completed": true
+    }
+  ]
+},
+{
+  "_id": {
+    "$oid": "6af4b8224da1018e3e970bec"
+  },
+  "routeID": "R002",
+  "routeName": "Dublin City Centre",
+  "vehicleID": "V002",
+  "cityZone": "Dublin City Centre",
+  "wasteType": "Recycling",
+  "collectionDate": {
+    "$date": "2026-11-02T00:00:00.000Z"
+  },
+  "distanceKm": 18.2,
+  "totalWeightCollected": 6200,
+  "completed": true,
+  "collectionStops": [
+    {
+      "stopNumber": 1,
+      "street": "O'Connell Street",
+      "weightCollected": 400,
+      "completed": true
+    },
+    {
+      "stopNumber": 2,
+      "street": "Henry Street",
+      "weightCollected": 300,
+      "completed": true
+    }
+  ]
+},
+{
+  "_id": {
+    "$oid": "6af4b8224da1018e3e970bed"
+  },
+  "routeID": "R003",
+  "routeName": "Clondalkin West",
+  "vehicleID": "V004",
+  "cityZone": "Clondalkin",
+  "wasteType": "General Waste",
+  "collectionDate": {
+    "$date": "2026-11-03T00:00:00.000Z"
+  },
+  "distanceKm": 32,
+  "totalWeightCollected": 9100,
+  "completed": true,
+  "collectionStops": [
+    {
+      "stopNumber": 1,
+      "street": "Nangor Road",
+      "weightCollected": 500,
+      "completed": true
+    },
+    {
+      "stopNumber": 2,
+      "street": "Monastery Road",
+      "weightCollected": 420,
+      "completed": true
+    }
+  ]
+},
+{
+  "_id": {
+    "$oid": "6af4b8224da1018e3e970bee"
+  },
+  "routeID": "R004",
+  "routeName": "Blanchardstown Recycling",
+  "vehicleID": "V005",
+  "cityZone": "Blanchardstown",
+  "wasteType": "Recycling",
+  "collectionDate": {
+    "$date": "2026-11-04T00:00:00.000Z"
+  },
+  "distanceKm": 28.7,
+  "totalWeightCollected": 5700.5,
+  "completed": true,
+  "collectionStops": [
+    {
+      "stopNumber": 1,
+      "street": "Main Street",
+      "weightCollected": 300,
+      "completed": true
+    },
+    {
+      "stopNumber": 2,
+      "street": "Mill Road",
+      "weightCollected": 275,
+      "completed": true
+    }
+  ]
+},
+{
+  "_id": {
+    "$oid": "6af4b8224da1018e3e970bef"
+  },
+  "routeID": "R005",
+  "routeName": "Dun Laoghaire General",
+  "vehicleID": "V008",
+  "cityZone": "Dun Laoghaire",
+  "wasteType": "General Waste",
+  "collectionDate": {
+    "$date": "2026-11-05T00:00:00.000Z"
+  },
+  "distanceKm": 35.4,
+  "totalWeightCollected": 10200,
+  "completed": true,
+  "collectionStops": [
+    {
+      "stopNumber": 1,
+      "street": "George Street",
+      "weightCollected": 600,
+      "completed": true
+    },
+    {
+      "stopNumber": 2,
+      "street": "Marine Road",
+      "weightCollected": 450,
+      "completed": true
+    }
+  ]
+},
+{
+  "_id": {
+    "$oid": "6af4b8224da1018e3e970bf0"
+  },
+  "routeID": "R006",
+  "routeName": "Finglas North",
+  "vehicleID": "V007",
+  "cityZone": "Finglas",
+  "wasteType": "Organic Waste",
+  "collectionDate": {
+    "$date": "2026-11-06T00:00:00.000Z"
+  },
+  "distanceKm": 22.3,
+  "totalWeightCollected": 4300,
+  "completed": false,
+  "collectionStops": [
+    {
+      "stopNumber": 1,
+      "street": "Finglas Road",
+      "weightCollected": 350,
+      "completed": true
+    },
+    {
+      "stopNumber": 2,
+      "street": "Ballygall Road",
+      "weightCollected": 0,
+      "completed": false
+    }
+  ]
+},
+{
+  "_id": {
+    "$oid": "6af4b8224da1018e3e970bf1"
+  },
+  "routeID": "R007",
+  "routeName": "Rathmines Recycling",
+  "vehicleID": "V010",
+  "cityZone": "Rathmines",
+  "wasteType": "Recycling",
+  "collectionDate": {
+    "$date": "2026-11-07T00:00:00.000Z"
+  },
+  "distanceKm": 16.8,
+  "totalWeightCollected": 3900,
+  "completed": true,
+  "collectionStops": [
+    {
+      "stopNumber": 1,
+      "street": "Rathmines Road",
+      "weightCollected": 275,
+      "completed": true
+    },
+    {
+      "stopNumber": 2,
+      "street": "Lower Rathmines Road",
+      "weightCollected": 325,
+      "completed": true
+    }
+  ]
+},
+{
+  "_id": {
+    "$oid": "6af4b8224da1018e3e970bf2"
+  },
+  "routeID": "R008",
+  "routeName": "Swords General Waste",
+  "vehicleID": "V001",
+  "cityZone": "Swords",
+  "wasteType": "General Waste",
+  "collectionDate": {
+    "$date": "2026-11-08T00:00:00.000Z"
+  },
+  "distanceKm": 40.5,
+  "totalWeightCollected": 11500,
+  "completed": true,
+  "collectionStops": [
+    {
+      "stopNumber": 1,
+      "street": "Main Street",
+      "weightCollected": 700,
+      "completed": true
+    },
+    {
+      "stopNumber": 2,
+      "street": "Malahide Road",
+      "weightCollected": 550,
+      "completed": true
+    }
+  ]
+},
+{
+  "_id": {
+    "$oid": "6af4b8224da1018e3e970bf3"
+  },
+  "routeID": "R009",
+  "routeName": "Lucan Organic Collection",
+  "vehicleID": "V005",
+  "cityZone": "Lucan",
+  "wasteType": "Organic Waste",
+  "collectionDate": {
+    "$date": "2026-11-09T00:00:00.000Z"
+  },
+  "distanceKm": 27.6,
+  "totalWeightCollected": 4800,
+  "completed": false,
+  "collectionStops": [
+    {
+      "stopNumber": 1,
+      "street": "Main Street",
+      "weightCollected": 400,
+      "completed": true
+    },
+    {
+      "stopNumber": 2,
+      "street": "Leixlip Road",
+      "weightCollected": 0,
+      "completed": false
+    }
+  ]
+},
+{
+  "_id": {
+    "$oid": "6af4b8224da1018e3e970bf4"
+  },
+  "routeID": "R010",
+  "routeName": "Drumcondra Recycling",
+  "vehicleID": "V002",
+  "cityZone": "Drumcondra",
+  "wasteType": "Recycling",
+  "collectionDate": {
+    "$date": "2026-11-10T00:00:00.000Z"
+  },
+  "distanceKm": 20.1,
+  "totalWeightCollected": 5100,
+  "completed": true,
+  "collectionStops": [
+    {
+      "stopNumber": 1,
+      "street": "Drumcondra Road",
+      "weightCollected": 350,
+      "completed": true
+    },
+    {
+      "stopNumber": 2,
+      "street": "Home Farm Road",
+      "weightCollected": 275,
+      "completed": true
+    }
+  ]
+},
+{
+  "_id": {
+    "$oid": "6af4b8a09b24d12b4d815e85"
+  },
+  "routeID": "R001",
+  "routeName": "Tallaght North",
+  "vehicleID": "V001",
+  "cityZone": "Tallaght",
+  "wasteType": "General Waste",
+  "collectionDate": {
+    "$date": "2026-11-01T00:00:00.000Z"
+  },
+  "distanceKm": 25.5,
+  "totalWeightCollected": 8500.5,
+  "completed": true,
+  "collectionStops": [
+    {
+      "stopNumber": 1,
+      "street": "Main Street",
+      "weightCollected": 250.5,
+      "completed": true
+    },
+    {
+      "stopNumber": 2,
+      "street": "High Street",
+      "weightCollected": 350,
+      "completed": true
+    }
+  ]
+},
+{
+  "_id": {
+    "$oid": "6af4b8a09b24d12b4d815e86"
+  },
+  "routeID": "R002",
+  "routeName": "Dublin City Centre",
+  "vehicleID": "V002",
+  "cityZone": "Dublin City Centre",
+  "wasteType": "Recycling",
+  "collectionDate": {
+    "$date": "2026-11-02T00:00:00.000Z"
+  },
+  "distanceKm": 18.2,
+  "totalWeightCollected": 6200,
+  "completed": true,
+  "collectionStops": [
+    {
+      "stopNumber": 1,
+      "street": "O'Connell Street",
+      "weightCollected": 400,
+      "completed": true
+    },
+    {
+      "stopNumber": 2,
+      "street": "Henry Street",
+      "weightCollected": 300,
+      "completed": true
+    }
+  ]
+},
+{
+  "_id": {
+    "$oid": "6af4b8a09b24d12b4d815e87"
+  },
+  "routeID": "R003",
+  "routeName": "Clondalkin West",
+  "vehicleID": "V004",
+  "cityZone": "Clondalkin",
+  "wasteType": "General Waste",
+  "collectionDate": {
+    "$date": "2026-11-03T00:00:00.000Z"
+  },
+  "distanceKm": 32,
+  "totalWeightCollected": 9100,
+  "completed": true,
+  "collectionStops": [
+    {
+      "stopNumber": 1,
+      "street": "Nangor Road",
+      "weightCollected": 500,
+      "completed": true
+    },
+    {
+      "stopNumber": 2,
+      "street": "Monastery Road",
+      "weightCollected": 420,
+      "completed": true
+    }
+  ]
+},
+{
+  "_id": {
+    "$oid": "6af4b8a09b24d12b4d815e88"
+  },
+  "routeID": "R004",
+  "routeName": "Blanchardstown Recycling",
+  "vehicleID": "V005",
+  "cityZone": "Blanchardstown",
+  "wasteType": "Recycling",
+  "collectionDate": {
+    "$date": "2026-11-04T00:00:00.000Z"
+  },
+  "distanceKm": 28.7,
+  "totalWeightCollected": 5700.5,
+  "completed": true,
+  "collectionStops": [
+    {
+      "stopNumber": 1,
+      "street": "Main Street",
+      "weightCollected": 300,
+      "completed": true
+    },
+    {
+      "stopNumber": 2,
+      "street": "Mill Road",
+      "weightCollected": 275,
+      "completed": true
+    }
+  ]
+},
+{
+  "_id": {
+    "$oid": "6af4b8a09b24d12b4d815e89"
+  },
+  "routeID": "R005",
+  "routeName": "Dun Laoghaire General",
+  "vehicleID": "V008",
+  "cityZone": "Dun Laoghaire",
+  "wasteType": "General Waste",
+  "collectionDate": {
+    "$date": "2026-11-05T00:00:00.000Z"
+  },
+  "distanceKm": 35.4,
+  "totalWeightCollected": 10200,
+  "completed": true,
+  "collectionStops": [
+    {
+      "stopNumber": 1,
+      "street": "George Street",
+      "weightCollected": 600,
+      "completed": true
+    },
+    {
+      "stopNumber": 2,
+      "street": "Marine Road",
+      "weightCollected": 450,
+      "completed": true
+    }
+  ]
+},
+{
+  "_id": {
+    "$oid": "6af4b8a09b24d12b4d815e8a"
+  },
+  "routeID": "R006",
+  "routeName": "Finglas North",
+  "vehicleID": "V007",
+  "cityZone": "Finglas",
+  "wasteType": "Organic Waste",
+  "collectionDate": {
+    "$date": "2026-11-06T00:00:00.000Z"
+  },
+  "distanceKm": 22.3,
+  "totalWeightCollected": 4300,
+  "completed": false,
+  "collectionStops": [
+    {
+      "stopNumber": 1,
+      "street": "Finglas Road",
+      "weightCollected": 350,
+      "completed": true
+    },
+    {
+      "stopNumber": 2,
+      "street": "Ballygall Road",
+      "weightCollected": 0,
+      "completed": false
+    }
+  ]
+},
+{
+  "_id": {
+    "$oid": "6af4b8a09b24d12b4d815e8b"
+  },
+  "routeID": "R007",
+  "routeName": "Rathmines Recycling",
+  "vehicleID": "V010",
+  "cityZone": "Rathmines",
+  "wasteType": "Recycling",
+  "collectionDate": {
+    "$date": "2026-11-07T00:00:00.000Z"
+  },
+  "distanceKm": 16.8,
+  "totalWeightCollected": 3900,
+  "completed": true,
+  "collectionStops": [
+    {
+      "stopNumber": 1,
+      "street": "Rathmines Road",
+      "weightCollected": 275,
+      "completed": true
+    },
+    {
+      "stopNumber": 2,
+      "street": "Lower Rathmines Road",
+      "weightCollected": 325,
+      "completed": true
+    }
+  ]
+},
+{
+  "_id": {
+    "$oid": "6af4b8a09b24d12b4d815e8c"
+  },
+  "routeID": "R008",
+  "routeName": "Swords General Waste",
+  "vehicleID": "V001",
+  "cityZone": "Swords",
+  "wasteType": "General Waste",
+  "collectionDate": {
+    "$date": "2026-11-08T00:00:00.000Z"
+  },
+  "distanceKm": 40.5,
+  "totalWeightCollected": 11500,
+  "completed": true,
+  "collectionStops": [
+    {
+      "stopNumber": 1,
+      "street": "Main Street",
+      "weightCollected": 700,
+      "completed": true
+    },
+    {
+      "stopNumber": 2,
+      "street": "Malahide Road",
+      "weightCollected": 550,
+      "completed": true
+    }
+  ]
+},
+{
+  "_id": {
+    "$oid": "6af4b8a09b24d12b4d815e8d"
+  },
+  "routeID": "R009",
+  "routeName": "Lucan Organic Collection",
+  "vehicleID": "V005",
+  "cityZone": "Lucan",
+  "wasteType": "Organic Waste",
+  "collectionDate": {
+    "$date": "2026-11-09T00:00:00.000Z"
+  },
+  "distanceKm": 27.6,
+  "totalWeightCollected": 4800,
+  "completed": false,
+  "collectionStops": [
+    {
+      "stopNumber": 1,
+      "street": "Main Street",
+      "weightCollected": 400,
+      "completed": true
+    },
+    {
+      "stopNumber": 2,
+      "street": "Leixlip Road",
+      "weightCollected": 0,
+      "completed": false
+    }
+  ]
+},
+{
+  "_id": {
+    "$oid": "6af4b8a09b24d12b4d815e8e"
+  },
+  "routeID": "R010",
+  "routeName": "Drumcondra Recycling",
+  "vehicleID": "V002",
+  "cityZone": "Drumcondra",
+  "wasteType": "Recycling",
+  "collectionDate": {
+    "$date": "2026-11-10T00:00:00.000Z"
+  },
+  "distanceKm": 20.1,
+  "totalWeightCollected": 5100,
+  "completed": true,
+  "collectionStops": [
+    {
+      "stopNumber": 1,
+      "street": "Drumcondra Road",
+      "weightCollected": 350,
+      "completed": true
+    },
+    {
+      "stopNumber": 2,
+      "street": "Home Farm Road",
+      "weightCollected": 275,
+      "completed": true
+    }
+  ]
+}]

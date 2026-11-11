@@ -1,0 +1,552 @@
+[{
+  "_id": {
+    "$oid": "6af4b8224da1018e3e970be1"
+  },
+  "vehicleID": "V001",
+  "registration": "241D12345",
+  "vehicleType": "Rear Loader",
+  "capacityKg": 12000.5,
+  "fuelType": "Diesel",
+  "available": true,
+  "purchaseDate": {
+    "$date": "2024-03-15T00:00:00.000Z"
+  },
+  "maintenanceHistory": [
+    {
+      "serviceDate": {
+        "$date": "2026-05-10T00:00:00.000Z"
+      },
+      "description": "Engine maintenance",
+      "cost": 450
+    }
+  ],
+  "currentLocation": {
+    "type": "Point",
+    "coordinates": [
+      -6.2603,
+      53.3498
+    ]
+  }
+},
+{
+  "_id": {
+    "$oid": "6af4b8224da1018e3e970be2"
+  },
+  "vehicleID": "V002",
+  "registration": "231D54321",
+  "vehicleType": "Front Loader",
+  "capacityKg": 15000,
+  "fuelType": "Diesel",
+  "available": true,
+  "purchaseDate": {
+    "$date": "2023-06-20T00:00:00.000Z"
+  },
+  "maintenanceHistory": [
+    {
+      "serviceDate": {
+        "$date": "2026-04-12T00:00:00.000Z"
+      },
+      "description": "Brake inspection",
+      "cost": 320
+    }
+  ],
+  "currentLocation": {
+    "type": "Point",
+    "coordinates": [
+      -6.3,
+      53.35
+    ]
+  }
+},
+{
+  "_id": {
+    "$oid": "6af4b8224da1018e3e970be3"
+  },
+  "vehicleID": "V003",
+  "registration": "222D67890",
+  "vehicleType": "Electric Compactor",
+  "capacityKg": 9000,
+  "fuelType": "Electric",
+  "available": false,
+  "purchaseDate": {
+    "$date": "2022-09-10T00:00:00.000Z"
+  },
+  "maintenanceHistory": [
+    {
+      "serviceDate": {
+        "$date": "2026-06-15T00:00:00.000Z"
+      },
+      "description": "Battery inspection",
+      "cost": 280
+    }
+  ],
+  "currentLocation": {
+    "type": "Point",
+    "coordinates": [
+      -6.27,
+      53.34
+    ]
+  }
+},
+{
+  "_id": {
+    "$oid": "6af4b8224da1018e3e970be4"
+  },
+  "vehicleID": "V004",
+  "registration": "242D98765",
+  "vehicleType": "Rear Loader",
+  "capacityKg": 11000,
+  "fuelType": "Diesel",
+  "available": true,
+  "purchaseDate": {
+    "$date": "2024-07-05T00:00:00.000Z"
+  },
+  "maintenanceHistory": [],
+  "currentLocation": {
+    "type": "Point",
+    "coordinates": [
+      -6.32,
+      53.29
+    ]
+  }
+},
+{
+  "_id": {
+    "$oid": "6af4b8224da1018e3e970be5"
+  },
+  "vehicleID": "V005",
+  "registration": "231D11223",
+  "vehicleType": "Side Loader",
+  "capacityKg": 13000,
+  "fuelType": "Hybrid",
+  "available": true,
+  "purchaseDate": {
+    "$date": "2023-02-18T00:00:00.000Z"
+  },
+  "maintenanceHistory": [
+    {
+      "serviceDate": {
+        "$date": "2026-03-20T00:00:00.000Z"
+      },
+      "description": "Tyre replacement",
+      "cost": 600
+    }
+  ],
+  "currentLocation": {
+    "type": "Point",
+    "coordinates": [
+      -6.35,
+      53.33
+    ]
+  }
+},
+{
+  "_id": {
+    "$oid": "6af4b8224da1018e3e970be6"
+  },
+  "vehicleID": "V006",
+  "registration": "221D44556",
+  "vehicleType": "Front Loader",
+  "capacityKg": 16000,
+  "fuelType": "Diesel",
+  "available": false,
+  "purchaseDate": {
+    "$date": "2022-01-12T00:00:00.000Z"
+  },
+  "maintenanceHistory": [
+    {
+      "serviceDate": {
+        "$date": "2026-08-01T00:00:00.000Z"
+      },
+      "description": "Hydraulic system repair",
+      "cost": 950
+    }
+  ],
+  "currentLocation": {
+    "type": "Point",
+    "coordinates": [
+      -6.28,
+      53.36
+    ]
+  }
+},
+{
+  "_id": {
+    "$oid": "6af4b8224da1018e3e970be7"
+  },
+  "vehicleID": "V007",
+  "registration": "251D77889",
+  "vehicleType": "Electric Compactor",
+  "capacityKg": 8500,
+  "fuelType": "Electric",
+  "available": true,
+  "purchaseDate": {
+    "$date": "2025-01-25T00:00:00.000Z"
+  },
+  "maintenanceHistory": [],
+  "currentLocation": {
+    "type": "Point",
+    "coordinates": [
+      -6.24,
+      53.37
+    ]
+  }
+},
+{
+  "_id": {
+    "$oid": "6af4b8224da1018e3e970be8"
+  },
+  "vehicleID": "V008",
+  "registration": "232D33445",
+  "vehicleType": "Rear Loader",
+  "capacityKg": 12500,
+  "fuelType": "Diesel",
+  "available": true,
+  "purchaseDate": {
+    "$date": "2023-11-30T00:00:00.000Z"
+  },
+  "maintenanceHistory": [
+    {
+      "serviceDate": {
+        "$date": "2026-07-05T00:00:00.000Z"
+      },
+      "description": "Oil and filter change",
+      "cost": 180
+    }
+  ],
+  "currentLocation": {
+    "type": "Point",
+    "coordinates": [
+      -6.37,
+      53.31
+    ]
+  }
+},
+{
+  "_id": {
+    "$oid": "6af4b8224da1018e3e970be9"
+  },
+  "vehicleID": "V009",
+  "registration": "241D55667",
+  "vehicleType": "Side Loader",
+  "capacityKg": 14000,
+  "fuelType": "Hybrid",
+  "available": false,
+  "purchaseDate": {
+    "$date": "2024-05-14T00:00:00.000Z"
+  },
+  "maintenanceHistory": [
+    {
+      "serviceDate": {
+        "$date": "2026-09-10T00:00:00.000Z"
+      },
+      "description": "Transmission repair",
+      "cost": 1100
+    }
+  ],
+  "currentLocation": {
+    "type": "Point",
+    "coordinates": [
+      -6.29,
+      53.3
+    ]
+  }
+},
+{
+  "_id": {
+    "$oid": "6af4b8224da1018e3e970bea"
+  },
+  "vehicleID": "V010",
+  "registration": "251D99001",
+  "vehicleType": "Rear Loader",
+  "capacityKg": 10000,
+  "fuelType": "Electric",
+  "available": true,
+  "purchaseDate": {
+    "$date": "2025-04-08T00:00:00.000Z"
+  },
+  "maintenanceHistory": [],
+  "currentLocation": {
+    "type": "Point",
+    "coordinates": [
+      -6.33,
+      53.35
+    ]
+  }
+},
+{
+  "_id": {
+    "$oid": "6af4b8a09b24d12b4d815e7b"
+  },
+  "vehicleID": "V001",
+  "registration": "241D12345",
+  "vehicleType": "Rear Loader",
+  "capacityKg": 12000.5,
+  "fuelType": "Diesel",
+  "available": true,
+  "purchaseDate": {
+    "$date": "2024-03-15T00:00:00.000Z"
+  },
+  "maintenanceHistory": [
+    {
+      "serviceDate": {
+        "$date": "2026-05-10T00:00:00.000Z"
+      },
+      "description": "Engine maintenance",
+      "cost": 450
+    }
+  ],
+  "currentLocation": {
+    "type": "Point",
+    "coordinates": [
+      -6.2603,
+      53.3498
+    ]
+  }
+},
+{
+  "_id": {
+    "$oid": "6af4b8a09b24d12b4d815e7c"
+  },
+  "vehicleID": "V002",
+  "registration": "231D54321",
+  "vehicleType": "Front Loader",
+  "capacityKg": 15000,
+  "fuelType": "Diesel",
+  "available": true,
+  "purchaseDate": {
+    "$date": "2023-06-20T00:00:00.000Z"
+  },
+  "maintenanceHistory": [
+    {
+      "serviceDate": {
+        "$date": "2026-04-12T00:00:00.000Z"
+      },
+      "description": "Brake inspection",
+      "cost": 320
+    }
+  ],
+  "currentLocation": {
+    "type": "Point",
+    "coordinates": [
+      -6.3,
+      53.35
+    ]
+  }
+},
+{
+  "_id": {
+    "$oid": "6af4b8a09b24d12b4d815e7d"
+  },
+  "vehicleID": "V003",
+  "registration": "222D67890",
+  "vehicleType": "Electric Compactor",
+  "capacityKg": 9000,
+  "fuelType": "Electric",
+  "available": false,
+  "purchaseDate": {
+    "$date": "2022-09-10T00:00:00.000Z"
+  },
+  "maintenanceHistory": [
+    {
+      "serviceDate": {
+        "$date": "2026-06-15T00:00:00.000Z"
+      },
+      "description": "Battery inspection",
+      "cost": 280
+    }
+  ],
+  "currentLocation": {
+    "type": "Point",
+    "coordinates": [
+      -6.27,
+      53.34
+    ]
+  }
+},
+{
+  "_id": {
+    "$oid": "6af4b8a09b24d12b4d815e7e"
+  },
+  "vehicleID": "V004",
+  "registration": "242D98765",
+  "vehicleType": "Rear Loader",
+  "capacityKg": 11000,
+  "fuelType": "Diesel",
+  "available": true,
+  "purchaseDate": {
+    "$date": "2024-07-05T00:00:00.000Z"
+  },
+  "maintenanceHistory": [],
+  "currentLocation": {
+    "type": "Point",
+    "coordinates": [
+      -6.32,
+      53.29
+    ]
+  }
+},
+{
+  "_id": {
+    "$oid": "6af4b8a09b24d12b4d815e7f"
+  },
+  "vehicleID": "V005",
+  "registration": "231D11223",
+  "vehicleType": "Side Loader",
+  "capacityKg": 13000,
+  "fuelType": "Hybrid",
+  "available": true,
+  "purchaseDate": {
+    "$date": "2023-02-18T00:00:00.000Z"
+  },
+  "maintenanceHistory": [
+    {
+      "serviceDate": {
+        "$date": "2026-03-20T00:00:00.000Z"
+      },
+      "description": "Tyre replacement",
+      "cost": 600
+    }
+  ],
+  "currentLocation": {
+    "type": "Point",
+    "coordinates": [
+      -6.35,
+      53.33
+    ]
+  }
+},
+{
+  "_id": {
+    "$oid": "6af4b8a09b24d12b4d815e80"
+  },
+  "vehicleID": "V006",
+  "registration": "221D44556",
+  "vehicleType": "Front Loader",
+  "capacityKg": 16000,
+  "fuelType": "Diesel",
+  "available": false,
+  "purchaseDate": {
+    "$date": "2022-01-12T00:00:00.000Z"
+  },
+  "maintenanceHistory": [
+    {
+      "serviceDate": {
+        "$date": "2026-08-01T00:00:00.000Z"
+      },
+      "description": "Hydraulic system repair",
+      "cost": 950
+    }
+  ],
+  "currentLocation": {
+    "type": "Point",
+    "coordinates": [
+      -6.28,
+      53.36
+    ]
+  }
+},
+{
+  "_id": {
+    "$oid": "6af4b8a09b24d12b4d815e81"
+  },
+  "vehicleID": "V007",
+  "registration": "251D77889",
+  "vehicleType": "Electric Compactor",
+  "capacityKg": 8500,
+  "fuelType": "Electric",
+  "available": true,
+  "purchaseDate": {
+    "$date": "2025-01-25T00:00:00.000Z"
+  },
+  "maintenanceHistory": [],
+  "currentLocation": {
+    "type": "Point",
+    "coordinates": [
+      -6.24,
+      53.37
+    ]
+  }
+},
+{
+  "_id": {
+    "$oid": "6af4b8a09b24d12b4d815e82"
+  },
+  "vehicleID": "V008",
+  "registration": "232D33445",
+  "vehicleType": "Rear Loader",
+  "capacityKg": 12500,
+  "fuelType": "Diesel",
+  "available": true,
+  "purchaseDate": {
+    "$date": "2023-11-30T00:00:00.000Z"
+  },
+  "maintenanceHistory": [
+    {
+      "serviceDate": {
+        "$date": "2026-07-05T00:00:00.000Z"
+      },
+      "description": "Oil and filter change",
+      "cost": 180
+    }
+  ],
+  "currentLocation": {
+    "type": "Point",
+    "coordinates": [
+      -6.37,
+      53.31
+    ]
+  }
+},
+{
+  "_id": {
+    "$oid": "6af4b8a09b24d12b4d815e83"
+  },
+  "vehicleID": "V009",
+  "registration": "241D55667",
+  "vehicleType": "Side Loader",
+  "capacityKg": 14000,
+  "fuelType": "Hybrid",
+  "available": false,
+  "purchaseDate": {
+    "$date": "2024-05-14T00:00:00.000Z"
+  },
+  "maintenanceHistory": [
+    {
+      "serviceDate": {
+        "$date": "2026-09-10T00:00:00.000Z"
+      },
+      "description": "Transmission repair",
+      "cost": 1100
+    }
+  ],
+  "currentLocation": {
+    "type": "Point",
+    "coordinates": [
+      -6.29,
+      53.3
+    ]
+  }
+},
+{
+  "_id": {
+    "$oid": "6af4b8a09b24d12b4d815e84"
+  },
+  "vehicleID": "V010",
+  "registration": "251D99001",
+  "vehicleType": "Rear Loader",
+  "capacityKg": 10000,
+  "fuelType": "Electric",
+  "available": true,
+  "purchaseDate": {
+    "$date": "2025-04-08T00:00:00.000Z"
+  },
+  "maintenanceHistory": [],
+  "currentLocation": {
+    "type": "Point",
+    "coordinates": [
+      -6.33,
+      53.35
+    ]
+  }
+}]
