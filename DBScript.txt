@@ -354,3 +354,291 @@ db.collectionRoutes.insertMany([
 Verify documents
 db.collectionVehicles.countDocuments()
 db.collectionRoutes.countDocuments()
+
+
+// =====================================================================
+// PART 3: QUERYING
+// Database: wasteManagementDB
+// Collections: collectionVehicles, collectionRoutes
+// Expected results are based on the sample data inserted in Part 2.
+// =====================================================================
+
+use wasteManagementDB
+
+// Required for the geospatial query (Q14)
+db.collectionVehicles.createIndex({ currentLocation: "2dsphere" })
+
+
+// ---------------------------------------------------------------------
+// Q1. BASIC FIND + PROJECTION: Fleet availability
+// Which vehicles are available for dispatch right now?
+// Expected: V001, V002, V004, V005, V007, V008, V010 (7 vehicles)
+// ---------------------------------------------------------------------
+db.collectionVehicles.find(
+  { available: true },
+  { _id: 0, vehicleID: 1, registration: 1, vehicleType: 1, capacityKg: 1 }
+)
+
+
+// ---------------------------------------------------------------------
+// Q2. FILTER + SORT: Electric fleet by capacity
+// Electric vehicles from largest to smallest capacity, to help assign
+// low-emission vehicles to the heaviest city routes.
+// Expected: V010 (10000), V003 (9000), V007 (8500)
+// ---------------------------------------------------------------------
+db.collectionVehicles.find(
+  { fuelType: "Electric" },
+  { _id: 0, vehicleID: 1, vehicleType: 1, capacityKg: 1, available: 1 }
+).sort({ capacityKg: -1 })
+
+
+// ---------------------------------------------------------------------
+// Q3. COMPOUND FILTER ($and, $gt): Long general waste routes
+// General waste routes over 25km, candidates for splitting or
+// re-optimising.
+// Expected: R008, R005, R003, R001
+// ---------------------------------------------------------------------
+db.collectionRoutes.find(
+  { $and: [ { wasteType: "General Waste" }, { distanceKm: { $gt: 25 } } ] },
+  { _id: 0, routeID: 1, routeName: 1, cityZone: 1, distanceKm: 1 }
+).sort({ distanceKm: -1 })
+
+
+// ---------------------------------------------------------------------
+// Q4. $in + SORT BY DATE: Recycling and organic collections
+// All recycling and organic routes in date order, to track how often
+// segregated waste streams are being collected.
+// Expected: R002, R004, R006, R007, R009, R010
+// ---------------------------------------------------------------------
+db.collectionRoutes.find(
+  { wasteType: { $in: ["Recycling", "Organic Waste"] } },
+  { _id: 0, routeID: 1, routeName: 1, wasteType: 1, collectionDate: 1 }
+).sort({ collectionDate: 1 })
+
+
+// ---------------------------------------------------------------------
+// Q5. ARRAY QUERY (field inside an array): Costly repairs
+// Vehicles that have had any single maintenance job costing over 500.
+// Expected: V005 (600), V006 (950), V009 (1100)
+// ---------------------------------------------------------------------
+db.collectionVehicles.find(
+  { "maintenanceHistory.cost": { $gt: 500 } },
+  { _id: 0, vehicleID: 1, vehicleType: 1, maintenanceHistory: 1 }
+)
+
+
+// ---------------------------------------------------------------------
+// Q6. ARRAY QUERY ($size): Vehicles with no service record
+// Vehicles with an empty maintenance history, flagged for a first
+// inspection.
+// Expected: V004, V007, V010
+// ---------------------------------------------------------------------
+db.collectionVehicles.find(
+  { maintenanceHistory: { $size: 0 } },
+  { _id: 0, vehicleID: 1, registration: 1, purchaseDate: 1 }
+)
+
+
+// ---------------------------------------------------------------------
+// Q7. ARRAY QUERY ($elemMatch): Heavy Main Street stops
+// Routes with a Main Street stop where at least 300kg was collected.
+// $elemMatch makes both conditions apply to the SAME stop.
+// Expected: R004 (300), R008 (700), R009 (400)
+// ---------------------------------------------------------------------
+db.collectionRoutes.find(
+  { collectionStops: { $elemMatch: { street: "Main Street", weightCollected: { $gte: 300 } } } },
+  { _id: 0, routeID: 1, routeName: 1, cityZone: 1, collectionStops: 1 }
+)
+
+
+// ---------------------------------------------------------------------
+// Q8. AGGREGATION ($group, $sum, $avg): Weight collected by waste type
+// Total and average weight collected for each waste stream.
+// Expected: General Waste 39300.5kg (4 routes),
+//           Recycling 20900.5kg (4 routes), Organic Waste 9100kg (2 routes)
+// ---------------------------------------------------------------------
+db.collectionRoutes.aggregate([
+  { $group: {
+      _id: "$wasteType",
+      totalWeightKg: { $sum: "$totalWeightCollected" },
+      avgWeightPerRouteKg: { $avg: "$totalWeightCollected" },
+      routeCount: { $sum: 1 }
+  } },
+  { $sort: { totalWeightKg: -1 } }
+])
+
+
+// ---------------------------------------------------------------------
+// Q9. AGGREGATION ($group, $project, $divide, $limit): Zone efficiency
+// Top 5 city zones by kg collected per km driven. Higher means the
+// route is denser and more efficient for the fleet.
+// Expected: Dublin City Centre (~340.7), Tallaght (~333.4),
+//           Dun Laoghaire (~288.1), Clondalkin (~284.4), Swords (~284.0)
+// ---------------------------------------------------------------------
+db.collectionRoutes.aggregate([
+  { $group: {
+      _id: "$cityZone",
+      totalWeightKg: { $sum: "$totalWeightCollected" },
+      totalDistanceKm: { $sum: "$distanceKm" },
+      routes: { $sum: 1 }
+  } },
+  { $project: {
+      _id: 0,
+      cityZone: "$_id",
+      routes: 1,
+      totalWeightKg: 1,
+      totalDistanceKm: 1,
+      kgPerKm: { $round: [ { $divide: ["$totalWeightKg", "$totalDistanceKm"] }, 1 ] }
+  } },
+  { $sort: { kgPerKm: -1 } },
+  { $limit: 5 }
+])
+
+
+// ---------------------------------------------------------------------
+// Q10. AGGREGATION WITH $lookup (cross-collection join): Weight by fuel type
+// Joins each route to the vehicle that ran it (via vehicleID) and
+// totals the waste collected by diesel, hybrid and electric vehicles.
+// Expected: Diesel 50600.5kg (6 routes), Hybrid 10500.5kg (2),
+//           Electric 8200kg (2)
+// ---------------------------------------------------------------------
+db.collectionRoutes.aggregate([
+  { $lookup: {
+      from: "collectionVehicles",
+      localField: "vehicleID",
+      foreignField: "vehicleID",
+      as: "vehicle"
+  } },
+  { $unwind: "$vehicle" },
+  { $group: {
+      _id: "$vehicle.fuelType",
+      totalWeightKg: { $sum: "$totalWeightCollected" },
+      totalDistanceKm: { $sum: "$distanceKm" },
+      routes: { $sum: 1 }
+  } },
+  { $sort: { totalWeightKg: -1 } }
+])
+
+
+// ---------------------------------------------------------------------
+// Q11. AGGREGATION: Vehicle workload
+// Number of routes and total distance driven per vehicle, to spot
+// over-used vehicles.
+// Expected: V001 (2 routes, 66km), V005 (2, 56.3km), V002 (2, 38.3km),
+//           then the single-route vehicles
+// ---------------------------------------------------------------------
+db.collectionRoutes.aggregate([
+  { $group: {
+      _id: "$vehicleID",
+      routesRun: { $sum: 1 },
+      totalDistanceKm: { $sum: "$distanceKm" },
+      zones: { $addToSet: "$cityZone" }
+  } },
+  { $sort: { routesRun: -1, totalDistanceKm: -1 } }
+])
+
+
+// ---------------------------------------------------------------------
+// Q12. AGGREGATION WITH $unwind ON ARRAY: Maintenance spend per vehicle
+// Breaks out the maintenanceHistory array and totals cost per vehicle.
+// Expected: V009 (1100), V006 (950), V005 (600), V001 (450),
+//           V002 (320), V003 (280), V008 (180)
+// ---------------------------------------------------------------------
+db.collectionVehicles.aggregate([
+  { $unwind: "$maintenanceHistory" },
+  { $group: {
+      _id: "$vehicleID",
+      vehicleType: { $first: "$vehicleType" },
+      services: { $sum: 1 },
+      totalMaintenanceCost: { $sum: "$maintenanceHistory.cost" },
+      lastService: { $max: "$maintenanceHistory.serviceDate" }
+  } },
+  { $sort: { totalMaintenanceCost: -1 } }
+])
+
+
+// ---------------------------------------------------------------------
+// Q13. DATE RANGE QUERY: Completed routes in the first week of November
+// Fixed dates are used (rather than new Date()) so the query returns
+// the same results whenever it is run.
+// Expected (heaviest first): R005, R003, R001, R002, R004, R007
+// ---------------------------------------------------------------------
+db.collectionRoutes.find(
+  {
+    collectionDate: { $gte: ISODate("2026-11-01"), $lt: ISODate("2026-11-08") },
+    completed: true
+  },
+  { _id: 0, routeID: 1, routeName: 1, collectionDate: 1, totalWeightCollected: 1 }
+).sort({ totalWeightCollected: -1 })
+
+
+// ---------------------------------------------------------------------
+// Q14. GEOSPATIAL QUERY ($near): Available vehicles near the city centre
+// Available vehicles within 5km of O'Connell Street, nearest first.
+// Used to dispatch a vehicle to an urgent city centre collection.
+// Requires the 2dsphere index created at the top of this section.
+// Expected: V001, V002, V007, V010
+// ---------------------------------------------------------------------
+db.collectionVehicles.find(
+  {
+    currentLocation: {
+      $near: {
+        $geometry: { type: "Point", coordinates: [-6.2603, 53.3498] },
+        $maxDistance: 5000
+      }
+    },
+    available: true
+  },
+  { _id: 0, vehicleID: 1, vehicleType: 1, currentLocation: 1 }
+)
+
+
+// ---------------------------------------------------------------------
+// Q15. AGGREGATION WITH $unwind + $match: Missed collection stops
+// Lists every stop that was not completed, with the route, zone and
+// vehicle, so the council can schedule a follow-up collection.
+// Expected: Ballygall Road (R006, Finglas), Leixlip Road (R009, Lucan)
+// ---------------------------------------------------------------------
+db.collectionRoutes.aggregate([
+  { $unwind: "$collectionStops" },
+  { $match: { "collectionStops.completed": false } },
+  { $project: {
+      _id: 0,
+      routeID: 1,
+      cityZone: 1,
+      vehicleID: 1,
+      collectionDate: 1,
+      stopNumber: "$collectionStops.stopNumber",
+      missedStreet: "$collectionStops.street"
+  } },
+  { $sort: { collectionDate: 1 } }
+])
+
+
+// =====================================================================
+// ADMIN ROLE AND USER
+// Create = insert, Read = find, Write = update, Delete = remove
+// =====================================================================
+
+use wasteManagementDB
+
+db.createRole({
+  role: "adminRole",
+  privileges: [
+    { resource: { db: "wasteManagementDB", collection: "collectionVehicles" },
+      actions: ["insert", "find", "update", "remove"] },
+    { resource: { db: "wasteManagementDB", collection: "collectionRoutes" },
+      actions: ["insert", "find", "update", "remove"] }
+  ],
+  roles: []
+})
+
+db.createUser({
+  user: "Admin",
+  pwd: "pa33word",
+  roles: [ { role: "adminRole", db: "wasteManagementDB" } ]
+})
+
+// Verify the role and user
+db.getRole("adminRole", { showPrivileges: true })
+db.getUser("Admin")
