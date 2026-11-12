@@ -356,64 +356,84 @@ db.collectionVehicles.countDocuments()
 db.collectionRoutes.countDocuments()
 
 
-//querying
+part 3
 
 use wasteManagementDB
 
 db.collectionVehicles.createIndex({ currentLocation: "2dsphere" })
 
-//available vehicles
+
+available vehicles
+
 db.collectionVehicles.find(
   { available: true },
   { _id: 0, vehicleID: 1, registration: 1, vehicleType: 1 }
 )
 
-//electric sorted by capacity
+
+electric sorted by capacity
+
 db.collectionVehicles.find(
   { fuelType: "Electric" },
   { _id: 0, vehicleID: 1, capacityKg: 1 }
 ).sort({ capacityKg: -1 })
 
-//no of routes between 20 and 30km
+
+no of routes between 20 and 30km
+
 db.collectionRoutes.find({ distanceKm: { $gte: 20, $lte: 30 } }).count()
 
-//organic waste routes or routes over 35km
+
+organic waste routes or routes over 35km
+
 db.collectionRoutes.find(
   { $or: [ { wasteType: "Organic Waste" }, { distanceKm: { $gt: 35 } } ] },
   { _id: 0, routeID: 1, wasteType: 1, distanceKm: 1 }
 )
 
-//routes in tallaght, swords or slucan
+
+routes in tallaght, swords or slucan
+
 db.collectionRoutes.find(
   { cityZone: { $in: ["Tallaght", "Swords", "Lucan"] } },
   { _id: 0, routeID: 1, routeName: 1, cityZone: 1 }
 )
 
-//vehicles with a maintenance job over 500
+
+vehicles with a maintenance job over 500
+
 db.collectionVehicles.find(
   { "maintenanceHistory.cost": { $gt: 500 } },
   { _id: 0, vehicleID: 1, maintenanceHistory: 1 }
 )
 
-//vehicles with no maintenance before
+
+vehicles with no maintenance before
+
 db.collectionVehicles.find(
   { maintenanceHistory: { $size: 0 } },
   { _id: 0, vehicleID: 1, registration: 1 }
 )
 
-//routes with a main st stop of 300kg+
+
+routes with a main st stop of 300kg+
+
 db.collectionRoutes.find(
   { collectionStops: { $elemMatch: { street: "Main Street", weightCollected: { $gte: 300 } } } },
   { _id: 0, routeID: 1, routeName: 1 }
 )
 
-//routes with recycling in the name
+
+routes with recycling in the name
+
 db.collectionRoutes.find(
   { routeName: { $regex: /recycling/, $options: "i" } },
   { _id: 0, routeID: 1, routeName: 1 }
 )
 
-//completed routes from 1 to 7 November
+
+completed routes from 1 to 7 November
+
 db.collectionRoutes.find(
   {
     collectionDate: { $gte: ISODate("2026-11-01"), $lt: ISODate("2026-11-08") },
@@ -422,7 +442,9 @@ db.collectionRoutes.find(
   { _id: 0, routeID: 1, collectionDate: 1 }
 ).sort({ collectionDate: 1 })
 
-//available vehicles within 5km of the city centre
+
+available vehicles within 5km of the city centre
+
 db.collectionVehicles.find({
   currentLocation: {
     $near: {
@@ -433,7 +455,9 @@ db.collectionVehicles.find({
   available: true
 })
 
-//total and average weight by waste type
+
+total and average weight by waste type
+
 db.collectionRoutes.aggregate([
   { $group: {
       _id: "$wasteType",
@@ -443,7 +467,9 @@ db.collectionRoutes.aggregate([
   { $sort: { totalWeight: -1 } }
 ])
 
-//top 3 vehicles by completed routes
+
+top 3 vehicles by completed routes
+
 db.collectionRoutes.aggregate([
   { $match: { completed: true } },
   { $group: {
@@ -455,7 +481,9 @@ db.collectionRoutes.aggregate([
   { $limit: 3 }
 ])
 
-//tehicles grouped by fuel type
+
+tehicles grouped by fuel type
+
 db.collectionVehicles.aggregate([
   { $group: {
       _id: "$fuelType",
@@ -466,7 +494,9 @@ db.collectionVehicles.aggregate([
   { $sort: { vehicles: -1 } }
 ])
 
-//general waste totals. largest and smallest collection
+
+general waste totals. largest and smallest collection
+
 db.collectionRoutes.aggregate([
   { $match: { wasteType: "General Waste" } },
   { $group: {
